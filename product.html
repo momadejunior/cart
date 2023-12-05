@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Our Products</h1>
+    <ul>
+        <li id="product1">Product 1 <button onclick="addToCart('Product 1')">Add to Cart</button></li>
+        <li id="product2">Product 2 <button onclick="addToCart('Product 2')">Add to Cart</button></li>
+        <li id="product3">Product 3 <button onclick="addToCart('Product 3')">Add to Cart</button></li>
+    </ul>
+    <a href="cart.html">Go to Cart</a>
+
+    <script>
+        function addToCart(productName) {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + ' added to cart!');
+        }
+    </script>
+</body>
+</html>

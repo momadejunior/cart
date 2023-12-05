@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+    <ul id="cartItems">
+        <!-- Cart items will be displayed here -->
+    </ul>
+    <a href="checkout.html">Proceed to Checkout</a>
+
+    <script>
+        function displayCart() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var cartItems = document.getElementById('cartItems');
+
+            // Clear previous items
+            cartItems.innerHTML = '';
+
+            // Display current items
+            cart.forEach(function(item) {
+                var li = document.createElement('li');
+                li.textContent = item;
+                cartItems.appendChild(li);
+            });
+        }
+
+        // Display cart when the page loads
+        displayCart();
+    </script>
+</body>
+</html>
