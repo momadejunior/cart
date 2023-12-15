@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+</head>
+<body>
+    <h1>Product Details</h1>
+    <div id="demo"></div>
+
+    <a href="cart.html">Go to Cart</a>
+
+    <script>
+
+const urlParams = new URLSearchParams(window.location.search);
+
+// Get the value of the 'id' parameter
+const productId = parseInt(urlParams.get('id')); // Convert to number
+
+console.log(productId);
+
+let products = [
+    { id: 1, name: "BMW", color: "black", price: 13453 },
+    { id: 2, name: "TOYOTA", color: "black", price: 2345 }
+];
+
+let show = document.getElementById('demo');
+
+let foundProduct = products.find(product => product.id === productId);
+
+if (foundProduct) {
+    console.log("Product found:", foundProduct);
+    show.innerHTML=`<li>${foundProduct.name}</li>
+    <li>${foundProduct.color}</li>
+    <li>${foundProduct.price}</li>`;
+} else {
+    console.log("Product not found");
+}
+
+
+
+
+        function addToCart(productName) {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(productName + ' added to cart!');
+        }
+
+    </script>
+</body>
+</html>
